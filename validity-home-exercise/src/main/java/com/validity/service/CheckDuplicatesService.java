@@ -85,7 +85,10 @@ public class CheckDuplicatesService {
 						String currentValue = dataToCompare.get(columnHeaders.get(j));
 						String nextValue = copy.get(columnHeaders.get(j));
 
-						int fieldDistance = LevenshteinDistance.calculate(currentValue.toLowerCase(), nextValue.toLowerCase());
+						int fieldDistance=1000;
+						if(null!=currentValue && null!=nextValue)
+						fieldDistance = LevenshteinDistance.calculate(currentValue.toLowerCase(), nextValue.toLowerCase());
+						
 						if (fieldDistance <= fieldThreshold) {
 							currentValue.replaceAll("[^a-zA-Z]", "");
 							nextValue.replaceAll("[^a-zA-Z]", "");
