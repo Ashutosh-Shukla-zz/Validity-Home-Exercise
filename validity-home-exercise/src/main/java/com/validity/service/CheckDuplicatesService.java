@@ -56,7 +56,7 @@ public class CheckDuplicatesService {
 		// Set containing non duplicates
 		Set<Map<String, String>> setOfNONDuplicates = new HashSet<Map<String, String>>();
 
-		// adding initial entry for duplicate comparison
+		// adding initial entry for duplicate comparision
 		setOfDuplicates.add(data.get(0));
 		int dataSize = data.size();
 
@@ -84,9 +84,8 @@ public class CheckDuplicatesService {
 
 						String currentValue = dataToCompare.get(columnHeaders.get(j));
 						String nextValue = copy.get(columnHeaders.get(j));
-						int fieldDistance=1000;
-						if(null!=currentValue && null!=nextValue)
-						fieldDistance = LevenshteinDistance.calculate(currentValue.toLowerCase(), nextValue.toLowerCase());
+
+						int fieldDistance = LevenshteinDistance.calculate(currentValue.toLowerCase(), nextValue.toLowerCase());
 						if (fieldDistance <= fieldThreshold) {
 							currentValue.replaceAll("[^a-zA-Z]", "");
 							nextValue.replaceAll("[^a-zA-Z]", "");
